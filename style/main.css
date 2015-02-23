@@ -1,0 +1,56 @@
+#tickets {
+  /*Layout*/
+  float: left;
+  width: 89%;
+}
+
+#navigation {
+  /*Layout*/
+  float: left;
+  width: 10%;
+  z-index: 198;
+  height: 476px;
+  /*Text*/
+  zoom: 1;
+  /*Seperation*/
+  border-right: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+  border-bottom-right-radius: 5px;
+}
+
+ul {
+  list-style: none;
+}
+
+#tickets .ticketid {
+  margin-right: 10px;
+}
+
+#tickets section {
+  padding-left: 10px;
+}
+
+#tickets section header {
+  font-weight: 900;
+}
+
+#tickets li {
+  /*Seperation*/
+  border-bottom: 1px inset #d6d6d6;
+  /*Readability*/
+  padding: 25px;
+}
+
+html, body {
+  /*Layout*/
+  margin: 0;
+  padding: 0;
+  /*Aesthatics*/
+  background-color: #fff;
+  /*Font related*/
+  color: #333;
+  font-family: "Myriad Set Pro","Lucida Grande","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+  font-size: 16px;
+  line-height: 25px;
+  -webkit-font-smoothing: antialiased;
+}
