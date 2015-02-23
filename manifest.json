@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "Jarvis",
+  "description": "Keep track of your tickets",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "asset/jarvis-128.png",
+    "default_title": "Jarvis"
+  },
+  "background": {
+    "scripts": ["script/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs",
+    "https://ajax.googleapis.com/"
+  ]
+}
