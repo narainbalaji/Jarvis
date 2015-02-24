@@ -1,10 +1,28 @@
 (function(){
 
-  window.TicketController = function(){
-	(function fetchTickets(){
-		window.ticketController.add($("#sev3 ul"), {ticketId: "Ticket Id 4", shortDescription: "Short Description"});
-	})();
+  window.ViewController = function(element, ticketController){
+	this.ticketController = ticketController;
+	this.element = element;
   }
-  
+
+  window.ViewController.prototype = {
+  	show: function(){
+  		var self = this;
+  		/*Fetch tickets*/
+  		$.ajax({
+  			url: '',
+  			type: 'GET',
+  			username: "",
+  			password: "", 
+  			success: function(data){
+  				self.ticketController.add(self.element, {
+  					'id' : $(data.getElementsByTagName('id')[0]).text(),
+  					'shortDescription': $(data.getElementsByTagName('title')[0]).text()
+  				});
+  			}
+  		});
+  	}
+  }
+
 })();
 

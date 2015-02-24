@@ -14,8 +14,8 @@
   	add: function(section, ticket){
   		var template = $("#ticket-template li").clone();
   		template.append(ticket.shortDescription);
-  		template.appendTo(section);
-  		$("a", template).text(ticket.ticketId);
+  		template.appendTo($('ul', section));
+  		$("a", template).text(ticket.id);
   	}
   }
 
