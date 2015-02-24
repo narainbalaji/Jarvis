@@ -19,7 +19,7 @@
           <li><a class="ticketid" href="#">Ticket id 3</a>Short description</li>
         </ul>
       </section>
-      <section>
+      <section id="sev3">
         <header>Sev-3</header>
         <ul>
           <li><a class="ticketid" href="#">Ticket id 1</a>Short description</li>
@@ -28,6 +28,11 @@
         </ul>
       </section>
     </article>
-    <script type="text/javascript" src="script/ticket_controller.js"/>
+    <div id="ticket-template" style="display:none">
+      <li><a class="ticketid" href="#"></a></li>
+    </div>
+    <script type="text/javascript" src="/script/jquery-min.js"></script>
+    <script type="text/javascript" src="/script/ticket_controller.js"></script>
+    <script type="text/javascript" src="/script/engine.js"></script>
   </body>
 </html>

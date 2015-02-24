@@ -13,6 +13,7 @@
   },
   "permissions": [
     "tabs",
-    "https://ajax.googleapis.com/"
+    "https://ajax.googleapis.com/",
+    "https://tt.amazon.com/"
   ]
 }

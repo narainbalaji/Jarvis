@@ -41,6 +41,10 @@ ul {
   padding: 25px;
 }
 
+#tickets li:hover {
+  background-image: -webkit-linear-gradient(#ededed, #ededed 38%, #dedede);;
+}
+
 html, body {
   /*Layout*/
   margin: 0;
