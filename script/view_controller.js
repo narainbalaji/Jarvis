@@ -10,10 +10,10 @@
   		var self = this;
   		/*Fetch tickets*/
   		$.ajax({
-  			url: '',
+  			url: localStorage["jarvis.url"],
   			type: 'GET',
-  			username: "",
-  			password: "", 
+  			username: localStorage["jarvis.username"],
+  			password: localStorage["jarvis.password"], 
   			success: function(data){
   				self.ticketController.add(self.element, {
   					'id' : $(data.getElementsByTagName('id')[0]).text(),
