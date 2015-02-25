@@ -10,7 +10,7 @@
   	  	var parent = null;
         if($(e.target).parent('li').length > 0){
           parent = $(e.target).parent('li');
-        }else if("LI" === $(e.target).nodeName){
+        }else if("LI" === e.target.nodeName){
           parent = $(e.target);
         }
   	  	if(parent){
