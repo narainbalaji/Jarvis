@@ -17,6 +17,7 @@
           var ticket = findById($("a", parent).text(), self.tickets);
           if(ticket){
             self.markAsRead(ticket);
+            destoy(parent);
             chrome.tabs.create({
               'url': localStorage["jarvis.ticketUrl"] + ticket.id,
               'active': false
@@ -26,6 +27,10 @@
       }
 	  });	
   };
+
+  function destroy(ticketItem) {
+    $(ticketItem).remove();
+  }
 
   function findById(id, tickets){
     for(var i=0; i<tickets.length; i++){
@@ -74,7 +79,7 @@
       }
     },
     markAsRead: function(ticket){
-      localStorage[ticket.id] = JSON.stringify(ticket);
+      localStorage[ticket.id] = JSON.stringify(ticket)
     }
   };
 
