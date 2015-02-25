@@ -1,8 +1,21 @@
 (function(){
 
   window.ViewController = function(element, ticketController){
-	this.ticketController = ticketController;
-	this.element = element;
+	 this.ticketController = ticketController;
+	 this.element = element;
+  }
+
+  function getTickets(data){
+    var tickets = [];
+    var entries = data.getElementsByTagName('entry');
+    for(var i=0; i < entries.length; i++){
+      var ticket = {
+        id: $(entries[i].getElementsByTagName('title')[0]).text(),
+        shortDescription: $(entries[i].getElementsByTagName('summary')[0]).text()
+      }
+      tickets.push(ticket);
+    }
+    return tickets;
   }
 
   window.ViewController.prototype = {
@@ -12,17 +25,19 @@
   		$.ajax({
   			url: localStorage["jarvis.url"],
   			type: 'GET',
+        data: {
+          'phrase_search_text': localStorage["jarvis.login"]
+        },
   			username: localStorage["jarvis.username"],
   			password: localStorage["jarvis.password"], 
   			success: function(data){
-  				self.ticketController.add(self.element, {
-  					'id' : $(data.getElementsByTagName('id')[0]).text(),
-  					'shortDescription': $(data.getElementsByTagName('title')[0]).text()
-  				});
+          var tickets = getTickets(data);
+          for(var i=0; i < tickets.length; i++){
+            self.ticketController.add(self.element, tickets[i]); 
+          }
   			}
   		});
   	}
   }
-
 })();
 
