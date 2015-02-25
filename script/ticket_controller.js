@@ -17,7 +17,7 @@
           var ticket = findById($("a", parent).text(), self.tickets);
           if(ticket){
             self.markAsRead(ticket);
-            destoy(parent);
+            destroy(parent);
             chrome.tabs.create({
               'url': localStorage["jarvis.ticketUrl"] + ticket.id,
               'active': false
