@@ -57,6 +57,10 @@
     return result;
   }
 
+  function updateTicketHeading(section, title, count){
+    $("#ticket-list-heading", section).text(title + " (" + count + ")");
+  }
+
   window.TicketController.prototype = {
   	add: function(ticket){
       this.tickets.push(ticket);
@@ -65,14 +69,14 @@
       this.showingUnread = true;
       $("ul", section).empty();
       unreadTickets = getUnreadTickets(this.tickets);
-      $("#ticket-list-heading", section).text("Unread Tickets (" + unreadTickets.length +")");
+      updateTicketHeading(section, "Unread Tickets", unreadTickets.length);
       for(var i=0; i<unreadTickets.length;i++){
         showTicket(section, unreadTickets[i]);
       }
     },
     showAllTickets: function(section){
       this.showingUnread = false;
-      $("#ticket-list-heading", section).text("All Tickets (" + this.tickets.length +")");
+      updateTicketHeading(section, "All Tickets", this.tickets.length);
       $("ul", section).empty();
       for(var i=0; i<this.tickets.length;i++){
         showTicket(section, this.tickets[i]);
@@ -80,6 +84,8 @@
     },
     markAsRead: function(ticket){
       localStorage[ticket.id] = JSON.stringify(ticket)
+      unreadTickets = getUnreadTickets(this.tickets);
+      updateTicketHeading(section, "Unread Tickets", unreadTickets.length);
     }
   };
 
