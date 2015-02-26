@@ -15,6 +15,6 @@
   "permissions": [
     "tabs",
     "https://ajax.googleapis.com/",
-    "https://ticket-api.integ.amazon.com/"
+    "https://ticket-api.amazon.com/"
   ]
 }
