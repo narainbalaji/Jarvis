@@ -27,7 +27,8 @@
   			url: localStorage["jarvis.url"],
   			type: 'GET',
         data: {
-          'phrase_search_text': localStorage["jarvis.login"]
+          'phrase_search_text': localStorage["jarvis.login"],
+          'status': 'Assigned,Pending'
         },
   			username: localStorage["jarvis.username"],
   			password: localStorage["jarvis.password"], 
