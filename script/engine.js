@@ -1,7 +1,8 @@
 (function(){
 
-	/*Add tickets*/
-	window.ticketController = new window.TicketController();
+	/*Dependency injection*/
+	window.ticketStore = new window.TicketStore();
+  window.ticketController = new window.TicketController(window.ticketStore);
 	window.viewController = new window.ViewController($("#ticket-list"), window.ticketController);
 	window.viewController.show();
 

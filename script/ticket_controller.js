@@ -1,9 +1,9 @@
 (function(){
 
-  window.TicketController = function(){
-	  this.tickets = [];
+  window.TicketController = function(ticketStore){
     var self=this;
     this.showingUnread = false;
+    this.ticketStore = ticketStore;
     /*Add click handler*/
 	  $("body").click(function(e){
       if(self.showingUnread){
@@ -14,9 +14,9 @@
           parent = $(e.target);
         }
   	  	if(parent){
-          var ticket = findById($("a", parent).text(), self.tickets);
+          var ticket = self.ticketStore.get($("a", parent).text())
           if(ticket){
-            self.markAsRead(ticket);
+            self.markAsRead(self.element, ticket);
             destroy(parent);
             chrome.tabs.create({
               'url': localStorage["jarvis.ticketUrl"] + ticket.id,
@@ -32,29 +32,11 @@
     $(ticketItem).remove();
   }
 
-  function findById(id, tickets){
-    for(var i=0; i<tickets.length; i++){
-      if(id===tickets[i].id){
-        return tickets[i];
-      }
-    }
-  }
-
   function showTicket(section, ticket){
     var template = $("#ticket-template li").clone();
     template.append(ticket.shortDescription);
     template.appendTo($('ul', section));
     $("a", template).text(ticket.id);
-  }
-
-  function getUnreadTickets(tickets){
-    var result = [];
-    for(var i=0; i<tickets.length; i++){
-      if(!localStorage[tickets[i].id] || JSON.parse(localStorage[tickets[i].id]).modifiedDate !== tickets[i].modifiedDate){
-        result.push(tickets[i]);
-      }
-    }
-    return result;
   }
 
   function updateTicketHeading(section, title, count){
@@ -63,12 +45,12 @@
 
   window.TicketController.prototype = {
   	add: function(ticket){
-      this.tickets.push(ticket);
+      this.ticketStore.add(ticket);
   	},
     showUnreadTickets: function(section){
       this.showingUnread = true;
       $("ul", section).empty();
-      unreadTickets = getUnreadTickets(this.tickets);
+      unreadTickets = this.ticketStore.getUnreadTickets();
       updateTicketHeading(section, "Unread Tickets", unreadTickets.length);
       for(var i=0; i<unreadTickets.length;i++){
         showTicket(section, unreadTickets[i]);
@@ -76,15 +58,16 @@
     },
     showAllTickets: function(section){
       this.showingUnread = false;
-      updateTicketHeading(section, "All Tickets", this.tickets.length);
+      var allTickets = this.ticketStore.getAll();
+      updateTicketHeading(section, "All Tickets", allTickets.length);
       $("ul", section).empty();
-      for(var i=0; i<this.tickets.length;i++){
-        showTicket(section, this.tickets[i]);
+      for(var i=0; i<allTickets.length;i++){
+        showTicket(section, allTickets[i]);
       }
     },
-    markAsRead: function(ticket){
-      localStorage[ticket.id] = JSON.stringify(ticket)
-      unreadTickets = getUnreadTickets(this.tickets);
+    markAsRead: function(section, ticket){
+      this.ticketStore.markAsRead(ticket);
+      unreadTickets = this.ticketStore.getUnreadTickets();
       updateTicketHeading(section, "Unread Tickets", unreadTickets.length);
     }
   };

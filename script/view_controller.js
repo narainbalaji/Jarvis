@@ -36,9 +36,12 @@
           for(var i=0; i < tickets.length; i++){
             self.ticketController.add(tickets[i]); 
           }
-  			}
+          self.ticketController.showUnreadTickets(self.element);
+  			},
+        error: function(){
+          self.ticketController.showUnreadTickets(self.element);
+        }
   		});
-      self.ticketController.showUnreadTickets(self.element);
   	},
     showUnreadTickets: function(){
       this.ticketController.showUnreadTickets(this.element);
