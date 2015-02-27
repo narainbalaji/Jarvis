@@ -2,6 +2,11 @@
 
 Jarvis helps you keep track of your tickets.
 
+###Bugs
+
+1. The number of items on the All your tickets view is not getting updated after closing the ticket even though the ticket is not showing up.
+2. Clicking on the item in the All your tickets view is not opening the ticket.
+
 ### Upcoming features
 
 #### Functional
