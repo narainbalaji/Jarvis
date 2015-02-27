@@ -24,3 +24,12 @@ Jarvis helps you keep track of your tickets.
 1. Delete older and obsolete entries using batch jobs
 2. Compressing the entries stored in the database to reduce size
 3. Refactoring and extracting out the correct models and structure with the above functional and non function requirements in mind
+
+### V2 Features
+
+Jarvis also has potential to become your personal assistant apart from just ticket tracking.
+
+#### Functional
+
+1. Quickly add and keep track of tasks
+2. Have a couple of questions to ask someone and they are not online? Add the question and tag them. When they come online, I will remind you
