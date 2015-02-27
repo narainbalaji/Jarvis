@@ -23,6 +23,7 @@ Jarvis helps you keep track of your tickets.
 10. Integrate with pipeline API for tickets pending code push and alert once a new revision is in place
 11. Integrate with CM tool for tickets pending CM and alert once a new revision is in place
 12. Notify when a related item is updated or resolved
+13. SIM integration
 
 #### Non Functional
 

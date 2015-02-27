@@ -6,8 +6,7 @@
     this.ticketStore = ticketStore;
     /*Add click handler*/
 	  $("body").click(function(e){
-      if(self.showingUnread){
-  	  	var parent = null;
+      var parent = null;
         if($(e.target).parent('li').length > 0){
           parent = $(e.target).parent('li');
         }else if("LI" === e.target.nodeName){
@@ -16,15 +15,16 @@
   	  	if(parent){
           var ticket = self.ticketStore.get($("a", parent).text())
           if(ticket){
-            self.markAsRead(self.element, ticket);
-            destroy(parent);
+            if(self.showingUnread){
+              self.markAsRead(self.element, ticket);
+              destroy(parent);
+            }
             chrome.tabs.create({
               'url': localStorage["jarvis.ticketUrl"] + ticket.id,
               'active': false
             });
           }
   	  	}
-      }
 	  });	
   };
 
