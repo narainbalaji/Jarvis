@@ -1,13 +1,13 @@
 #tickets {
   /*Layout*/
   float: left;
-  width: 89%;
+  width: 85%;
 }
 
 #navigation {
   /*Layout*/
   float: left;
-  width: 10%;
+  width: 14%;
   z-index: 198;
   height: 476px;
   /*Text*/
@@ -16,6 +16,7 @@
   border-right: 1px solid #d6d6d6;
   border-bottom: 1px solid #d6d6d6;
   border-bottom-right-radius: 5px;
+  box-shadow: 10px 15px 30px -25px #888888;
 }
 
 ul {
@@ -36,9 +37,19 @@ ul {
 
 #tickets li {
   /*Seperation*/
-  border-bottom: 1px inset #d6d6d6;
+  #border-bottom: 1px inset #d6d6d6;
   /*Readability*/
   padding: 25px;
+}
+
+#tickets li:after{
+    content: "";
+    background-color: black;
+    height: 1px;
+    display: block;
+    position: relative;
+    top: 25px;
+    background: linear-gradient(to right, rgba(231,232,231,0.9) 50%, rgba(255,255,255,1) 100%);
 }
 
 #tickets li:hover {
